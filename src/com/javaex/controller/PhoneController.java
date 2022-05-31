@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.javaex.dao.PhoneDao;
+import com.javaex.util.WebUtil;
 import com.javaex.vo.PersonVo;
 
 
@@ -47,14 +48,20 @@ public class PhoneController extends HttpServlet {
 			//request에 데이터 추가
 			request.setAttribute("pList", phoneList);
 			
+			WebUtil.forward(request, response, "/WEB-INF/list.jsp");
 			
-			RequestDispatcher rd= request.getRequestDispatcher("/list.jsp");
-			rd.forward(request, response);
+			/*
+			 * RequestDispatcher rd= request.getRequestDispatcher("/WEB-INF/list.jsp");
+			 * rd.forward(request, response);
+			 */
 			
 		}else if("writeForm".equals(action)) {//action을 뒤로넣어주면 오류가 안생김 "writeForm".equals(action)
 			//포어드
-			RequestDispatcher rd= request.getRequestDispatcher("/writeForm.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "WEB-INF/writeForm.jsp");
+			/*
+			 * RequestDispatcher rd= request.getRequestDispatcher("/writeForm.jsp");
+			 * rd.forward(request, response);
+			 */
 		}else if("write".equals(action)) {
 			
 			String name = request.getParameter("name");
@@ -75,8 +82,7 @@ public class PhoneController extends HttpServlet {
 			
 			request.setAttribute("personVo", personVo);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/updateForm.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "WEB-INF/updateForm.jsp");
 		}else if ("update".equals(action)) {
 			int id = Integer.parseInt(request.getParameter("id"));
 			String name = request.getParameter("name");

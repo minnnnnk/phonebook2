@@ -28,6 +28,6 @@
 	</form>
 	<br>
 	<br>
-	<a href ="/list.jsp">리스트 바로가기</a>
+	<a href ="/WEB-INF/list.jsp">리스트 바로가기</a>
 </body>
 </html>
